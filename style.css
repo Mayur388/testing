@@ -1,0 +1,212 @@
+/* General Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff0f3; /* Soft pink background */
+    font-family: 'Poppins', sans-serif;
+    color: #590d22;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2 {
+    font-family: 'Dancing Script', cursive;
+}
+
+/* Floating Hearts Background */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -10px;
+    background-color: #ff4d6d;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    animation: floatUp 5s linear infinite;
+    opacity: 0.6;
+}
+
+.heart::before, .heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ff4d6d;
+}
+
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: -10px; top: 0; }
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(45deg) scale(0.5); opacity: 0; }
+    20% { opacity: 0.8; }
+    100% { transform: translateY(-100vh) rotate(45deg) scale(1); opacity: 0; }
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    color: #a4133c;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+#start-btn {
+    padding: 12px 30px;
+    background-color: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+    transition: transform 0.3s;
+}
+
+#start-btn:hover {
+    transform: scale(1.1);
+    background-color: #c9184a;
+}
+
+/* Gallery Section */
+.gallery {
+    padding: 50px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.gallery h2 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    color: #800f2f;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 300px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Hover Effect - Text appearing over image */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(89, 13, 34, 0.7); /* Dark pink tint */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    padding: 20px;
+}
+
+.card:hover .overlay {
+    opacity: 1;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+/* Message Section */
+.message {
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.message-box {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 700px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    border: 2px solid #ffccd5;
+}
+
+.message-box h2 {
+    color: #ff4d6d;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.message-box p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #ff4d6d;
+    font-weight: bold;
+}
+
+/* Scroll Animation Classes */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
